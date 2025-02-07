@@ -1,0 +1,227 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1c1e;
+    --text: #ffffff;
+    --input-background: #2c2c2e;
+    --input-border: #3a3a3c;
+    --button-background: #0a84ff;
+    --button-hover: #0066cc;
+    --results-background: #2c2c2e;
+    --timeline-background: #2c2c2e;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --text: #000000;
+    --input-background: #f2f2f7;
+    --input-border: #d1d1d6;
+    --button-background: #007aff;
+    --button-hover: #005bb5;
+    --results-background: #f2f2f7;
+    --timeline-background: #f2f2f7;
+  }
+}
+
+/* Body and Container */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  background: var(--background);
+  padding: 20px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Input Fields */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-background);
+  color: var(--text);
+  font-size: 16px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--button-background);
+}
+
+input[readonly] {
+  background: var(--input-background);
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 14px;
+  background: var(--button-background);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-hover);
+}
+
+/* Results Section */
+#results {
+  background: var(--results-background);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+#results p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* Timeline Section */
+#timeline {
+  background: var(--timeline-background);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+#timeline h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+#timeline p {
+  font-size: 14px;
+  margin: 6px 0;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+#timeline p strong {
+  font-weight: 500;
+  color: var(--button-background);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px; /* Space between columns */
+  margin-top: 20px;
+}
+
+/* Brewing Style Options */
+.style-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.style-options button {
+  flex: 1;
+  padding: 12px;
+  background: var(--input-background);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.style-options button.active {
+  background: var(--button-background);
+  color: white;
+  border-color: var(--button-background);
+}
+
+.style-options button:hover {
+  background: var(--button-hover);
+  border-color: var(--button-hover);
+}
+
+/* Combined Results Section */
+#combined-results {
+  margin-top: 20px;
+  background: var(--results-background);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+#combined-results h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+#combined-results .step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--input-border);
+}
+
+#combined-results .step:last-child {
+  border-bottom: none;
+}
+
+#combined-results .step .time {
+  font-weight: 500;
+  color: var(--button-background);
+}
+
+#combined-results .step .action {
+  flex: 1;
+  margin: 0 12px;
+}
+
+#combined-results .step .amount {
+  font-weight: 500;
+  color: var(--text);
+}

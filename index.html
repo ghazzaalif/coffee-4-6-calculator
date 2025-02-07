@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4:6 Method Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>4:6 Method Calculator</h1>
+    <label for="coffeeAmount">Coffee Amount (g):</label>
+    <input type="number" id="coffeeAmount" placeholder="e.g., 20" oninput="calculateWater()">
+    
+    <label for="totalWater">Total Water (g):</label>
+    <input type="number" id="totalWater" placeholder="Auto-calculated" readonly>
+    
+    <!-- Brewing Style Options -->
+    <div class="style-options">
+      <button onclick="setBrewingStyle('standard')" class="active">Standard</button>
+      <button onclick="setBrewingStyle('sweeter')">Sweeter</button>
+      <button onclick="setBrewingStyle('brighter')">Brighter</button>
+    </div>
+    
+    <button onclick="calculatePours()">Calculate Pours</button>
+    
+    <!-- Combined Timeline and Pour Amounts -->
+    <div id="combined-results"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
