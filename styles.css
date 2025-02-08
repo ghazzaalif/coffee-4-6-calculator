@@ -225,3 +225,59 @@ button:hover {
   font-weight: 500;
   color: var(--text);
 }
+
+/* Timer Section */
+#timer-section {
+  margin-top: 20px;
+  background: var(--results-background);
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#timer-display {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 20px 0;
+  color: var(--button-background);
+}
+
+#start-timer {
+  padding: 12px 24px;
+  background: var(--button-background);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#start-timer:hover {
+  background: var(--button-hover);
+}
+
+/* Timer Controls */
+#timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#pause-timer, #reset-timer {
+  padding: 12px 24px;
+  background: var(--button-background);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#pause-timer:hover, #reset-timer:hover {
+  background: var(--button-hover);
+}

@@ -26,6 +26,17 @@
     
     <!-- Combined Timeline and Pour Amounts -->
     <div id="combined-results"></div>
+    
+    <!-- Timer Section -->
+    <div id="timer-section">
+      <h2>Brewing Timer</h2>
+      <div id="timer-display">00:00</div>
+      <div id="timer-controls">
+        <button id="start-timer" onclick="startTimer()">Start Timer</button>
+        <button id="pause-timer" onclick="pauseTimer()" style="display: none;">Pause</button>
+        <button id="reset-timer" onclick="resetTimer()" style="display: none;">Reset</button>
+      </div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
