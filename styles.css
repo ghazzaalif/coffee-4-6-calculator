@@ -5,32 +5,62 @@
   box-sizing: border-box;
 }
 
-/* Default Dark Mode Colors */
-:root {
-  --background: #1a1a1a; /* Dark background */
-  --text: #ffffff; /* White text */
-  --input-background: #2d2d2d; /* Dark gray for inputs */
-  --input-border: #404040; /* Gray border for inputs */
-  --button-background: #ffffff; /* White buttons */
-  --button-hover: #e0e0e0; /* Light gray for button hover */
-  --button-text: #000000; /* Black text on white buttons */
-  --results-background: #2d2d2d; /* Dark gray for results section */
-  --timeline-background: #2d2d2d; /* Dark gray for timer section */
-  --step-border: #404040; /* Gray border for steps */
+/* Dark Theme */
+.dark-theme {
+  --background: #1a1a1a;
+  --text: #ffffff;
+  --input-background: #2d2d2d;
+  --input-border: #404040;
+  --button-background: #ffffff;
+  --button-hover: #e0e0e0;
+  --button-text: #000000;
+  --results-background: #2d2d2d;
+  --timeline-background: #2d2d2d;
+  --step-border: #404040;
 }
 
-/* Light Mode Colors */
-[data-theme="light"] {
-  --background: #ffffff; /* White background */
-  --text: #000000; /* Black text */
-  --input-background: #f0f0f0; /* Light gray for inputs */
-  --input-border: #cccccc; /* Gray border for inputs */
-  --button-background: #000000; /* Black buttons */
-  --button-hover: #333333; /* Dark gray for button hover */
-  --button-text: #ffffff; /* White text on black buttons */
-  --results-background: #f0f0f0; /* Light gray for results section */
-  --timeline-background: #f0f0f0; /* Light gray for timer section */
-  --step-border: #cccccc; /* Gray border for steps */
+/* Light Theme */
+.light-theme {
+  --background: #ffffff;
+  --text: #000000;
+  --input-background: #f0f0f0;
+  --input-border: #cccccc;
+  --button-background: #000000;
+  --button-hover: #333333;
+  --button-text: #ffffff;
+  --results-background: #f0f0f0;
+  --timeline-background: #f0f0f0;
+  --step-border: #cccccc;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.theme-toggle i {
+  transition: opacity 0.3s ease;
+}
+
+.dark-theme .theme-toggle #moon-icon {
+  display: inline-block;
+}
+
+.dark-theme .theme-toggle #sun-icon {
+  display: none;
+}
+
+.light-theme .theme-toggle #moon-icon {
+  display: none;
+}
+
+.light-theme .theme-toggle #sun-icon {
+  display: inline-block;
 }
 
 /* Body and Container */
@@ -226,30 +256,4 @@ button:hover {
 
 #pause-timer:hover, #reset-timer:hover {
   background: var(--button-hover);
-}
-
-/* Theme Toggle */
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  font-size: 24px;
-  color: var(--text);
-}
-
-.theme-toggle i {
-  transition: opacity 0.3s ease;
-}
-
-.theme-toggle #sun-icon {
-  display: none;
-}
-
-[data-theme="light"] .theme-toggle #moon-icon {
-  display: none;
-}
-
-[data-theme="light"] .theme-toggle #sun-icon {
-  display: inline-block;
 }

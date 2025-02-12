@@ -6,15 +6,16 @@ let pausedTime = 0; // To store the elapsed time when paused
 let isPaused = false; // To track if the timer is paused
 
 // Set dark mode as default
-document.documentElement.setAttribute("data-theme", "dark");
+document.documentElement.classList.add("dark-theme");
 
 // Theme Toggle Functionality
 function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  if (currentTheme === "dark") {
-    document.documentElement.setAttribute("data-theme", "light");
+  if (document.documentElement.classList.contains("dark-theme")) {
+    document.documentElement.classList.remove("dark-theme");
+    document.documentElement.classList.add("light-theme");
   } else {
-    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.classList.remove("light-theme");
+    document.documentElement.classList.add("dark-theme");
   }
 }
 
