@@ -230,40 +230,26 @@ button:hover {
 
 /* Theme Toggle */
 .theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.theme-toggle label {
-  font-size: 14px;
-  font-weight: 500;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
   color: var(--text);
 }
 
-.theme-toggle input[type="checkbox"] {
-  width: 40px;
-  height: 20px;
-  appearance: none;
-  background: var(--input-background);
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
+.theme-toggle i {
+  transition: opacity 0.3s ease;
 }
 
-.theme-toggle input[type="checkbox"]::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--button-background);
-  border-radius: 50%;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.3s ease;
+.theme-toggle #sun-icon {
+  display: none;
 }
 
-.theme-toggle input[type="checkbox"]:checked::before {
-  transform: translateX(20px);
+[data-theme="light"] .theme-toggle #moon-icon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle #sun-icon {
+  display: inline-block;
 }

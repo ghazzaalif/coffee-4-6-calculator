@@ -9,15 +9,14 @@ let isPaused = false; // To track if the timer is paused
 document.documentElement.setAttribute("data-theme", "dark");
 
 // Theme Toggle Functionality
-const themeToggle = document.getElementById("dark-mode-toggle");
-
-themeToggle.addEventListener("change", () => {
-  if (themeToggle.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  if (currentTheme === "dark") {
     document.documentElement.setAttribute("data-theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
   }
-});
+}
 
 // Brewing steps with their durations (in seconds)
 const brewingSteps = [
