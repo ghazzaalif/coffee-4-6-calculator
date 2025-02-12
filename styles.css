@@ -5,31 +5,32 @@
   box-sizing: border-box;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1c1c1e;
-    --text: #ffffff;
-    --input-background: #2c2c2e;
-    --input-border: #3a3a3c;
-    --button-background: #0a84ff;
-    --button-hover: #0066cc;
-    --results-background: #2c2c2e;
-    --timeline-background: #2c2c2e;
-  }
+/* Default Dark Mode Colors */
+:root {
+  --background: #1a1a1a; /* Dark background */
+  --text: #ffffff; /* White text */
+  --input-background: #2d2d2d; /* Dark gray for inputs */
+  --input-border: #404040; /* Gray border for inputs */
+  --button-background: #ffffff; /* White buttons */
+  --button-hover: #e0e0e0; /* Light gray for button hover */
+  --button-text: #000000; /* Black text on white buttons */
+  --results-background: #2d2d2d; /* Dark gray for results section */
+  --timeline-background: #2d2d2d; /* Dark gray for timer section */
+  --step-border: #404040; /* Gray border for steps */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --text: #000000;
-    --input-background: #f2f2f7;
-    --input-border: #d1d1d6;
-    --button-background: #007aff;
-    --button-hover: #005bb5;
-    --results-background: #f2f2f7;
-    --timeline-background: #f2f2f7;
-  }
+/* Light Mode Colors */
+[data-theme="light"] {
+  --background: #ffffff; /* White background */
+  --text: #000000; /* Black text */
+  --input-background: #f0f0f0; /* Light gray for inputs */
+  --input-border: #cccccc; /* Gray border for inputs */
+  --button-background: #000000; /* Black buttons */
+  --button-hover: #333333; /* Dark gray for button hover */
+  --button-text: #ffffff; /* White text on black buttons */
+  --results-background: #f0f0f0; /* Light gray for results section */
+  --timeline-background: #f0f0f0; /* Light gray for timer section */
+  --step-border: #cccccc; /* Gray border for steps */
 }
 
 /* Body and Container */
@@ -47,10 +48,10 @@ body {
 
 .container {
   background: var(--background);
-  padding: 20px;
-  border-radius: 14px;
+  padding: 24px;
+  border-radius: 8px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,12 +60,13 @@ h1 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
-  text-align: center;
+  color: var(--text);
 }
 
 label {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
+  color: var(--text);
   display: block;
   margin-bottom: 8px;
 }
@@ -75,10 +77,11 @@ input, select {
   padding: 12px;
   margin-bottom: 16px;
   border: 1px solid var(--input-border);
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--input-background);
   color: var(--text);
-  font-size: 16px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
 }
 
 input:focus, select:focus {
@@ -92,15 +95,15 @@ input[readonly] {
   opacity: 0.8;
 }
 
-/* Button */
+/* Buttons */
 button {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background: var(--button-background);
-  color: white;
+  color: var(--button-text);
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -108,50 +111,6 @@ button {
 
 button:hover {
   background: var(--button-hover);
-}
-
-/* Results Section */
-#results {
-  background: var(--results-background);
-  padding: 16px;
-  border-radius: 10px;
-}
-
-#results p {
-  font-size: 16px;
-  margin: 8px 0;
-}
-
-/* Timeline Section */
-#timeline {
-  background: var(--timeline-background);
-  padding: 16px;
-  border-radius: 10px;
-}
-
-#timeline h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-#timeline p {
-  font-size: 14px;
-  margin: 6px 0;
-  color: var(--text);
-  opacity: 0.9;
-}
-
-#timeline p strong {
-  font-weight: 500;
-  color: var(--button-background);
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 20px; /* Space between columns */
-  margin-top: 20px;
 }
 
 /* Brewing Style Options */
@@ -166,7 +125,7 @@ button:hover {
   padding: 12px;
   background: var(--input-background);
   border: 1px solid var(--input-border);
-  border-radius: 10px;
+  border-radius: 6px;
   color: var(--text);
   font-size: 14px;
   font-weight: 500;
@@ -176,7 +135,7 @@ button:hover {
 
 .style-options button.active {
   background: var(--button-background);
-  color: white;
+  color: var(--button-text);
   border-color: var(--button-background);
 }
 
@@ -185,53 +144,57 @@ button:hover {
   border-color: var(--button-hover);
 }
 
-/* Combined Results Section */
+/* Combined Results */
 #combined-results {
   margin-top: 20px;
   background: var(--results-background);
   padding: 16px;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 #combined-results h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
+  color: var(--text);
 }
 
-#combined-results .step {
+.step {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid var(--input-border);
+  border-bottom: 1px solid var(--step-border);
 }
 
-#combined-results .step:last-child {
+.step:last-child {
   border-bottom: none;
 }
 
-#combined-results .step .time {
-  font-weight: 500;
-  color: var(--button-background);
-}
-
-#combined-results .step .action {
-  flex: 1;
-  margin: 0 12px;
-}
-
-#combined-results .step .amount {
+.step .time {
   font-weight: 500;
   color: var(--text);
+  width: 60px;
+}
+
+.step .action {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.step .amount, .step .cumulative {
+  font-weight: 500;
+  color: var(--text);
+  width: 80px;
+  text-align: right;
 }
 
 /* Timer Section */
 #timer-section {
   margin-top: 20px;
-  background: var(--results-background);
+  background: var(--timeline-background);
   padding: 16px;
-  border-radius: 10px;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -239,26 +202,9 @@ button:hover {
   font-size: 48px;
   font-weight: 600;
   margin: 20px 0;
-  color: var(--button-background);
+  color: var(--text);
 }
 
-#start-timer {
-  padding: 12px 24px;
-  background: var(--button-background);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#start-timer:hover {
-  background: var(--button-hover);
-}
-
-/* Timer Controls */
 #timer-controls {
   display: flex;
   gap: 10px;
@@ -269,10 +215,10 @@ button:hover {
 #pause-timer, #reset-timer {
   padding: 12px 24px;
   background: var(--button-background);
-  color: white;
+  color: var(--button-text);
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -282,40 +228,42 @@ button:hover {
   background: var(--button-hover);
 }
 
-/* Step Container */
-.step {
+/* Theme Toggle */
+.theme-toggle {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--input-border);
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.step:last-child {
-  border-bottom: none;
-}
-
-.step .time {
-  font-weight: 500;
-  color: var(--button-background);
-  width: 60px; /* Fixed width for time column */
-}
-
-.step .action {
-  flex: 1;
-  margin: 0 20px; /* Add margin between action and amount */
-}
-
-.step .amount {
+.theme-toggle label {
+  font-size: 14px;
   font-weight: 500;
   color: var(--text);
-  width: 80px; /* Fixed width for amount column */
-  text-align: right; /* Align numbers to the right */
 }
 
-.step .cumulative {
-  font-weight: 500;
-  color: var(--text);
-  width: 80px; /* Fixed width for cumulative column */
-  text-align: right; /* Align numbers to the right */
+.theme-toggle input[type="checkbox"] {
+  width: 40px;
+  height: 20px;
+  appearance: none;
+  background: var(--input-background);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-toggle input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--button-background);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
 }

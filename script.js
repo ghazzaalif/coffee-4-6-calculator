@@ -5,6 +5,20 @@ let startTime; // To store the start time of the timer
 let pausedTime = 0; // To store the elapsed time when paused
 let isPaused = false; // To track if the timer is paused
 
+// Set dark mode as default
+document.documentElement.setAttribute("data-theme", "dark");
+
+// Theme Toggle Functionality
+const themeToggle = document.getElementById("dark-mode-toggle");
+
+themeToggle.addEventListener("change", () => {
+  if (themeToggle.checked) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+});
+
 // Brewing steps with their durations (in seconds)
 const brewingSteps = [
   { time: 0, action: "1st Pour" },
