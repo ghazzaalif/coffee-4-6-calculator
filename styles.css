@@ -281,3 +281,41 @@ button:hover {
 #pause-timer:hover, #reset-timer:hover {
   background: var(--button-hover);
 }
+
+/* Step Container */
+.step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+.step .time {
+  font-weight: 500;
+  color: var(--button-background);
+  width: 60px; /* Fixed width for time column */
+}
+
+.step .action {
+  flex: 1;
+  margin: 0 20px; /* Add margin between action and amount */
+}
+
+.step .amount {
+  font-weight: 500;
+  color: var(--text);
+  width: 80px; /* Fixed width for amount column */
+  text-align: right; /* Align numbers to the right */
+}
+
+.step .cumulative {
+  font-weight: 500;
+  color: var(--text);
+  width: 80px; /* Fixed width for cumulative column */
+  text-align: right; /* Align numbers to the right */
+}

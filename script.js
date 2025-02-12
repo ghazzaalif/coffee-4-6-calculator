@@ -72,14 +72,24 @@ function calculatePours() {
       pour5 = totalWater * 0.6 / 3; // 20% of total water
   }
 
+  // Calculate cumulative water amounts
+  const cumulativeWater = [
+    pour1,
+    pour1 + pour2,
+    pour1 + pour2 + pour3,
+    pour1 + pour2 + pour3 + pour4,
+    pour1 + pour2 + pour3 + pour4 + pour5,
+    pour1 + pour2 + pour3 + pour4 + pour5 // Total water
+  ];
+
   // Combined timeline and pour amounts
   const steps = [
-    { time: "0:00", action: "1st Pour", amount: `${pour1.toFixed(1)}g` },
-    { time: "0:45", action: "2nd Pour", amount: `${pour2.toFixed(1)}g` },
-    { time: "1:30", action: "3rd Pour", amount: `${pour3.toFixed(1)}g` },
-    { time: "2:15", action: "4th Pour", amount: `${pour4.toFixed(1)}g` },
-    { time: "2:45", action: "5th Pour", amount: `${pour5.toFixed(1)}g` },
-    { time: "3:30", action: "Remove the coffee dripper", amount: "" }
+    { time: "0:00", action: "1st Pour", amount: `${pour1.toFixed(1)}g`, cumulative: `${cumulativeWater[0].toFixed(1)}g` },
+    { time: "0:45", action: "2nd Pour", amount: `${pour2.toFixed(1)}g`, cumulative: `${cumulativeWater[1].toFixed(1)}g` },
+    { time: "1:30", action: "3rd Pour", amount: `${pour3.toFixed(1)}g`, cumulative: `${cumulativeWater[2].toFixed(1)}g` },
+    { time: "2:15", action: "4th Pour", amount: `${pour4.toFixed(1)}g`, cumulative: `${cumulativeWater[3].toFixed(1)}g` },
+    { time: "2:45", action: "5th Pour", amount: `${pour5.toFixed(1)}g`, cumulative: `${cumulativeWater[4].toFixed(1)}g` },
+    { time: "3:30", action: "Remove the coffee dripper", amount: "", cumulative: `${cumulativeWater[5].toFixed(1)}g` }
   ];
 
   let combinedHTML = "<h2>Brewing Steps</h2>";
@@ -89,6 +99,7 @@ function calculatePours() {
         <div class="time">${step.time}</div>
         <div class="action">${step.action}</div>
         <div class="amount">${step.amount}</div>
+        <div class="cumulative">${step.cumulative}</div>
       </div>
     `;
   });
@@ -105,12 +116,12 @@ function startTimer() {
 
   if (isPaused) {
     // Resume from paused time
-    startTime = Date.now() - pausedTime * 1000;
+    startTime = performance.now() - pausedTime * 1000;
     isPaused = false;
     document.getElementById('pause-timer').textContent = 'Pause'; // Change button text back to Pause
   } else {
     // Start from the beginning
-    startTime = Date.now();
+    startTime = performance.now();
     pausedTime = 0;
     currentStep = 0;
   }
@@ -133,7 +144,7 @@ function pauseTimer() {
     // Pause the timer
     clearInterval(timerInterval);
     isPaused = true;
-    pausedTime = Math.floor((Date.now() - startTime) / 1000); // Store elapsed time
+    pausedTime = Math.floor((performance.now() - startTime) / 1000); // Store elapsed time
     document.getElementById('pause-timer').textContent = 'Resume'; // Change button text to Resume
   }
 }
@@ -154,7 +165,7 @@ function resetTimer() {
 
 // Update the timer display
 function updateTimer() {
-  const elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Elapsed time in seconds
+  const elapsedTime = Math.floor((performance.now() - startTime) / 1000); // Elapsed time in seconds
   const minutes = Math.floor(elapsedTime / 60);
   const seconds = elapsedTime % 60;
 
@@ -174,6 +185,21 @@ function updateTimer() {
     resetTimer(); // Reset the timer
   }
 }
+
+// Handle tab visibility changes
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    // Tab is inactive, pause the timer
+    if (timerInterval && !isPaused) {
+      pauseTimer();
+    }
+  } else {
+    // Tab is active, resume the timer if it was paused
+    if (isPaused) {
+      startTimer();
+    }
+  }
+});
 
 // Initialize default brewing style
 setBrewingStyle("standard");
